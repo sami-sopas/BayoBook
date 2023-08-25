@@ -9,8 +9,34 @@
         
         @vite('resources/css/app.css')
     </head>
-    <body>
-        <h1 class="text-4xl font-extrabold">Estas en -@yield('titulo')</h1>
+    <body class="bg-gray-100">
+
+        <header class="p-5 border-b bg-white shadow">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-3xl font-black">BayoBook</h1>
+
+                <nav class="flex gap-2 items-center">
+                    <a class="font-bold uppercase text-gray-600"="#">Login</a>
+                    <a class="font-bold uppercase text-gray-600" href="{{ url('/crear-cuenta') }}">Crear Cuenta</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container mx-auto mt-10">
+            <h2 class="font-black text-center text-3xl mb-10">
+                @yield('titulo')
+            </h2>
+            @yield('contenido')
+        </main>
+
+        <footer class="text-center p-5 text-gray-500 font-bold uppercase">
+            BayoBook- Todos los derechos reservados 
+            {{
+                //Imprimir el año actual
+                now()->year
+            }}
+        </footer>
+        
     </body>
 
 </html>

@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+# Endpoints, de la vista que se debe de mostrar
+
+//Ruta con sintaxis "clusher" cuando no usas un controlador
 Route::get('/', function () {
-    return view('welcome');
+    return view('principal');
 });
+
+Route::get('/nosotros', function () {
+    return view('nosotros');
+});
+
+Route::get('/tienda', function () {
+    return view('tienda');
+});
+

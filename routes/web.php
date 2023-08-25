@@ -22,7 +22,11 @@ Route::get('/', function () {
 });
 
 //Ruta que apunta al controlador, en donde esta la url
-//Registra la ruta y registra la funcion
-Route::get('/crear-cuenta', [RegisterController::class,'index']);
+//Registra la ruta y registra la funcion                  Esto sirve para registrar el nombre de rutas
+Route::get('/register', [RegisterController::class,'index'])->name('register');
+
+//Se envia con peticion de tipo post
+//Cuando se envia un post, decimos que llamara a otro metodo del controlador
+Route::post('/register', [RegisterController::class,'store']);
 
 

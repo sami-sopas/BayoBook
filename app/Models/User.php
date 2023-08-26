@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+//Modelo que viene por defecto en Laravel
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -17,10 +19,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+     //Datos que esperamos que el usuario nos de
     protected $fillable = [
         'name',
         'email',
         'password',
+        'username', //Registramos username, el campo que agregamos a traves de la migracion
     ];
 
     /**

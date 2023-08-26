@@ -43,7 +43,8 @@
                         id="username"
                         name="username"
                         placeholder="Tu nombre de Usuario"
-                        class="border p-2 w-full rounded-lg"
+                        class="border p-2 w-full rounded-lg @error('username') border-red-500 @enderror"
+                        value="{{ old('username') }}"
                     />
 
                     @error('username')
@@ -62,7 +63,8 @@
                         id="email"
                         name="email"
                         placeholder="Tu email"
-                        class="border p-2 w-full rounded-lg"
+                        class="border p-2 w-full rounded-lg @error('email') border-red-500 @enderror"
+                        value="{{ old('email') }}"
                     />
 
                     @error('email')
@@ -81,7 +83,7 @@
                         id="password"
                         name="password"
                         placeholder="Tu contraseña"
-                        class="border p-2 w-full rounded-lg"
+                        class="border p-2 w-full rounded-lg @error('password') border-red-500 @enderror"
                     />
 
                     @error('password')

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,9 @@ Route::get('/register', [RegisterController::class,'index'])->name('register');
 //Se envia con peticion de tipo post
 //Cuando se envia un post, decimos que llamara a otro metodo del controlador
 Route::post('/register', [RegisterController::class,'store']);
+
+Route::get('/login',[LoginController::class,'index'])->name('login'); //Cargar login normal
+Route::post('/login',[LoginController::class,'store'])->name('login'); //(se puede quitar)
 
 //Una vez registrado/loggeado, lo redireccionamos al muro
 Route::get('/muro',[PostController::class,'index'])->name('posts.index');  

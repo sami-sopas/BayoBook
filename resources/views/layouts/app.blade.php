@@ -16,13 +16,43 @@
             <div class="container mx-auto flex justify-between items-center">
                 <h1 class="text-3xl font-black">BayoBook</h1>
 
-                <nav class="flex gap-2 items-center">
-                    <a class="font-bold uppercase text-gray-600" 
-                        href="#">Login</a>
-                        <!-- El route lee las rutas que tengramos registradas en el web.php mediante ->name() -->
-                    <a class="font-bold uppercase text-gray-600" 
-                        href="{{ route('register') }}">Crear Cuenta</a>
-                </nav>
+                <!-- Usando la directiva de auth para saber si el usuario esta autenticado,
+                    y asi mostrar el boton de cerrar sesion cuando lo este -->
+                @auth
+                    <!-- <p>Autenticado</p> -->
+                    <nav class="flex gap-2 items-center">
+                        <a class="font-bold text-gray-600" 
+                            href="#">Hola: 
+                            <span class="font-normal">
+                                {{ auth()->user()->username }}
+                            </span>
+                        </a>
+                            <!-- El route lee las rutas que tengramos registradas en el web.php mediante ->name() -->
+
+                         <!-- Cambiamos el <a> a un FORM para evitar ataques CrossRequest, de esta manera
+                              consultamos al servidor primero  -->   
+                        <form method="POST" action="{{ route('logout')}}">
+                        @csrf
+                        <button type="submit" class="font-bold uppercase text-gray-600" 
+                            href="{{ route('logout') }}">Cerrar sesion</button>
+                        </form>
+                        
+                    </nav>
+                @endauth
+
+                <!-- Guest para usuarios que no esten autenticados aun -->
+                @guest
+                    <!-- <p>No autenticado</p> -->
+                    <nav class="flex gap-2 items-center">
+                        <a class="font-bold uppercase text-gray-600" 
+                            href="{{ route('login')}} ">Login</a>
+                            <!-- El route lee las rutas que tengramos registradas en el web.php mediante ->name() -->
+                        <a class="font-bold uppercase text-gray-600" 
+                            href="{{ route('register') }}">Crear Cuenta</a>
+                    </nav>
+                @endguest
+ 
+
             </div>
         </header>
 

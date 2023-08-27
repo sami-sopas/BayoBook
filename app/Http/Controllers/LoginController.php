@@ -37,6 +37,8 @@ class LoginController extends Controller
         }
 
         //Usuario autenticado, lo mandamos a la secion de posts
-        return redirect()->route('posts.index');
+        //Le pasamos como parametro el objeto auth, para acceder a username, ya que esa ruta
+        //requiere de ese parametro
+        return redirect()->route('posts.index',auth()->user()->username);
     }
 }

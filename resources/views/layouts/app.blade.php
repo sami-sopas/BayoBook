@@ -22,7 +22,8 @@
                     <!-- <p>Autenticado</p> -->
                     <nav class="flex gap-2 items-center">
                         <a class="font-bold text-gray-600" 
-                            href="#">Hola: 
+                            href="{{ route('posts.index',auth()->user()->username)}}">
+                            Hola: 
                             <span class="font-normal">
                                 {{ auth()->user()->username }}
                             </span>

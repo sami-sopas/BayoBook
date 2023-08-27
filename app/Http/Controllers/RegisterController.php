@@ -56,6 +56,20 @@ class RegisterController extends Controller
 
         //Datos insertados correctamente...
 
+        // Autenticar usuario... (Aqui llenamos el objeto auth())
+
+        /*
+        Forma 1
+        auth()->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ]); 
+        */
+
+        //Forma 2
+        //Le decimos que del request tome email y password, e intente autenticar al user
+        auth()->attempt($request->only('email','password'));
+
         //Redireccionando usando un helper
         //Podemos acceder a el atraves del nombre que le dimos en web.php
         return redirect()->route('posts.index');

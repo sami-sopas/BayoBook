@@ -8,6 +8,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        dd('Viendo muro');
+        //auth() es un helper que ve que usuario esta autenticado actualmente
+        //La informacion que tenemos es la que vemos en "attribute" al registrar user
+        dd(auth())->user();
     }
 }

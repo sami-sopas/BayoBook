@@ -31,4 +31,10 @@ class PostController extends Controller
             'user' => $user, //Le pasamos a dashboard, la variable user para pasarlo a la vista
         ]);
     }
+
+    public function create()
+    {
+        //dd('Creando post...');
+        return view('posts.create');
+    }
 }

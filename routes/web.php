@@ -41,7 +41,9 @@ Route::post('/logout',[LogoutController::class,'store'])->name('logout'); //Para
 //Aqui aplicamos ROUTE MODEL BINDING, para tener urls unicas en los muros
 //Colocamos dentro de las llaves el nombre de un modelo, antes tenia ('/muro')
 //Con user:username, indicamos que mostrara en el link el nombre de usuario, en vez de solo el id
-Route::get('/{user:username}',[PostController::class,'index'])->name('posts.index');  
+Route::get('/{user:username}',[PostController::class,'index'])->name('posts.index');
+
+Route::get('/posts/create',[PostController::class,'create'])->name('post.create'); //crear posts
 
 
 

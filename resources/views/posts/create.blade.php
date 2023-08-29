@@ -4,7 +4,7 @@
     Creando Publicacion
 @endsection
 
-<!-- cargar hoja de estilos opcional (stack en app.blade)
+<!-- cargar hoja de estilos opcional (stack en app.blade) -->
 @push('styles')
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 @endpush
@@ -13,7 +13,7 @@
     <div class="md:flex md:items-center">
         <div class="md:w-1/2 px-10">
             <form action="{{ route('imagenes.store') }}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone border-dashed border-2 border-gray-700 w-full h-96 rounded flex flex-col justify-center items-center">
-
+                @csrf
             </form>
         </div>
 

@@ -13,3 +13,22 @@ const dropzone = new Dropzone('#dropzone', {
     maxFiles: 1,
     uploadMultiple: false,
 })
+
+/* Eventos de dropzone */
+dropzone.on('sending', function(file,xhr,formData) {
+    console.log(file);
+});
+
+dropzone.on('success',function(file,response) {
+    console.log(response); //imprime el nombre del archivo al subirse
+
+    /* mostrar alertas etc, cuando se sube */
+});
+
+dropzone.on('error',function(file,message) {
+    console.log(message);
+});
+
+dropzone.on('removedfile',function() {
+    console.log('Archivo eliminado');
+});

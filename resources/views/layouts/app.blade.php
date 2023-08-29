@@ -7,8 +7,8 @@
         <title>BayoBook - @yield('titulo')</title>
         <!-- Indicardor de que usara vite -->
         
-        @vite('resources/css/app.css')
-        <script src="{{ 'js/app.js'}}" defer></script>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!--<script src="{{ asset('js/app.js') }}" defer></script> -->
     </head>
     <body class="bg-gray-100">
 

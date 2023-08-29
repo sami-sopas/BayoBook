@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->text('descripcion');
             $table->string('imagen'); //Guarda el nombre de la imagen
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //LLave foranea para relacionar usuarios con posts
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //LLave foranea para relacionar usuarios con posts, si se elimina un usuario, se borran sus posts
             $table->timestamps();
         });
     }

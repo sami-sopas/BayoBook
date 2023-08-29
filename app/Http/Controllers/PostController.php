@@ -37,4 +37,17 @@ class PostController extends Controller
         //dd('Creando post...');
         return view('posts.create');
     }
+
+    //Validar y guardar en la BD
+    public function store(Request $request)
+    {
+        //dd('Publicacion enviada');
+
+        //Validando los campos de la publicacion
+        $this->validate($request,[
+            'titulo' => 'required|max:255',
+            'descripcion' => 'required',
+            'imagen' => 'required'
+        ]);
+    }
 }

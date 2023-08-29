@@ -16,8 +16,12 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        //Generar datos aleatorios para hacer testing
         return [
-            //
+            'titulo' => $this->faker->sentence(5),
+            'descripcion' => $this->faker->sentence(20),
+            'imagen' => $this->faker->uuid() . '.jpg' ,
+            'user_id' => $this->faker->randomElement([6,7]) ,
         ];
     }
 }

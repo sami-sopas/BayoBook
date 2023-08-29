@@ -15,16 +15,24 @@ const dropzone = new Dropzone('#dropzone', {
 })
 
 /* Eventos de dropzone */
+
+/*
 dropzone.on('sending', function(file,xhr,formData) {
     console.log(file);
 });
+*/
 
 dropzone.on('success',function(file,response) {
-    console.log(response); //imprime el nombre del archivo al subirse
+    console.log(response.imagen); //imprime el nombre del archivo al subirse
+
+    //asignamos ese nombre, al elemento que esta oculto en create.blade.php
+    //ya que necesitamos el nombre del archivo que se genera para poder enviarlo por post a su controlador
+    Document.querySelector('[name="imagen"]').value = response.imagen;
 
     /* mostrar alertas etc, cuando se sube */
 });
 
+/*
 dropzone.on('error',function(file,message) {
     console.log(message);
 });
@@ -32,3 +40,4 @@ dropzone.on('error',function(file,message) {
 dropzone.on('removedfile',function() {
     console.log('Archivo eliminado');
 });
+*/

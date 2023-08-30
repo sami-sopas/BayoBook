@@ -17,4 +17,11 @@ class Post extends Model
         'imagen',
         'user_id', 
     ];
+
+    //Metodo para decir que un Post pertenece a un usuario
+    //Relacion de N a 1
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

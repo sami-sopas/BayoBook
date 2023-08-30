@@ -47,4 +47,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Metodo del modelo para realizar la relacion 1 a muchos
+    //1 usuario puede tener multiples Posts
+    public function posts()
+    {
+        //como segundo argumento, puede tomar la foreign key a la que hacemos referencia
+        return $this->hasMany(Post::class);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -49,5 +50,27 @@ class PostController extends Controller
             'descripcion' => 'required',
             'imagen' => 'required'
         ]);
+
+        //Modelo de Post que creamos,
+        //le pasamos un arreglo con la informacion que debe ir en la BD (migracion post table)
+        Post::create([ //Forma 1 de crear registros en laravel
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'imagen' => $request->imagen,
+            'user_id' => auth()->user()->id, //Sacar id del usuario actual (auth)
+        ]);
+
+        //Forma 2 de crear registros
+        /*
+        $post = new Post;
+        $post->titulo = $request->titulo;
+        $post->descripcion = $request->descripcion;
+        $post->imagen = $request->imagen;
+        $post->user_id = auth()->user()->id;
+        $post->save();
+        */
+
+        //Redirigir al usuario a su muro, recordar que como parametro requiere su nombre de usuario
+        return redirect()->route('posts.index',auth()->user()->username);
     }
 }

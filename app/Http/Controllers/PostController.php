@@ -28,8 +28,16 @@ class PostController extends Controller
 
         //dd($user->username); //imprime el nombre del usuario  de la sesionactual
 
+        //Devuelve un arreglo con las publicaciones del usuario, filtrando por su id
+        $posts = Post::where('user_id',$user->id)->paginate(3);
+
+        //Mostrar todos las publicaciones en el feed: $posts = Post::where('user_id',$user->id)->get();
+
+        //dd($posts); imprime los posts asociados al usuario
+
         return view('dashboard',[
             'user' => $user, //Le pasamos a dashboard, la variable user para pasarlo a la vista
+            'posts' => $posts,
         ]);
     }
 
@@ -68,6 +76,16 @@ class PostController extends Controller
         $post->imagen = $request->imagen;
         $post->user_id = auth()->user()->id;
         $post->save();
+        */
+
+        //Forma 3 de crear registros (Usando las relaciones que creamos con ORM)
+        /*
+        $request->user()->posts()->create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'imagen' => $request->imagen,
+            'user_id' => auth()->user()->id,
+        ]);
         */
 
         //Redirigir al usuario a su muro, recordar que como parametro requiere su nombre de usuario

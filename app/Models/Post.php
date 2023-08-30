@@ -22,6 +22,8 @@ class Post extends Model
     //Relacion de N a 1
     public function user()
     {
-        return $this->belongsTo(User::class);
+        //Con el select, decimos que campos nos queremos traer de la relacion
+        //Para que no muestre todos al usar $posts->user
+        return $this->belongsTo(User::class)->select(['name','username']);
     }
 }

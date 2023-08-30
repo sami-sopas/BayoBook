@@ -42,4 +42,35 @@
             </div>
         </div>
     </div>
+
+    <section class="container mx-auto mt-10">
+        <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
+
+        <!-- en tamaño mediano se mostraran 2 columnas, 
+            en tamaño grande 3, y en tamaño muy grande 4 columnas
+        -->
+        @if ($posts->count()) 
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"> 
+            <!--Mostrar que no hay publicaciones en caso de -->
+            @foreach ($posts as $post)
+            <div>
+                <a href="">
+                    <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="imagen-post {{$post->titulo}}">
+                </a>
+            </div>            
+            @endforeach
+        @else
+                <!--Mostrar que aun no hay publicaciones-->
+                <div class="text-gray-600 uppercase text-sm text-center font-bold">
+                    No hay posts
+                </div>
+        @endif
+
+       </div>
+
+       <div class="my-10">
+        {{ $posts->links()}}
+      </div>
+    </section>
+
 @endsection

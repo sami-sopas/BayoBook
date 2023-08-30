@@ -57,8 +57,10 @@
                 <!-- para capturar el nombre de la imagen, despues de subirla (se sube primero al imageController) -->
                 <div class="mb-5">
                     <input
+                        id="imagen"
                         name="imagen"
                         type="hidden"
+                        value = "{{ old('imagen')}}"
                     />
                     @error('imagen')
                     <!-- Con $message imprimimos el mensaje del error que trae laravel -->
@@ -79,3 +81,4 @@
     </div>
 
 @endsection
+

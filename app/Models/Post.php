@@ -26,4 +26,11 @@ class Post extends Model
         //Para que no muestre todos al usar $posts->user
         return $this->belongsTo(User::class)->select(['name','username']);
     }
+
+    //Relacion, 1 post, puede tener multiples comentarios
+    //Con esto podemos hacer $post->comentarios, sin tener que usar wheres, etc
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
+    }
 }

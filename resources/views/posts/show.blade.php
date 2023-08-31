@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('titulo')
-    <!-- Aqui esta la variable que le pasamos desde el controlador -->
     {{$post->titulo}}
 @endsection
 
 @section('contenido')
-    <div class="container mx-auto flex">
+    <div class="container mx-auto md:flex">
         <div class="md:w-1/2">
             <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="Imagen-post {{$post->titulo}}">
 
@@ -32,7 +31,14 @@
                     Agrega un nuevo comentario
                 </p>
 
-                <form action="">
+                @if (session('mensaje'))
+                    <div class="bg-green-500 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold">
+                        {{ session('mensaje')}}
+                    </div>
+                @endif
+
+                <form action="{{ route('comentarios.store',['post' => $post,'user' => $user])}}" method="POST">
+                    @csrf
                     <div class="mb-5">
                         <label for="comentario" class="mb-2 block uppercase text-gray-500 font-bold">
                             Añade un comentario
@@ -56,6 +62,22 @@
                 </form>
             </div>
             @endauth
+            <!-- Comentarios -->
+            <div class="bg-white shadow mb-5 max-h-96 overflow-y-scroll mt-10 ml-5">
+               @if ($post->comentarios->count())
+                   @foreach ($post->comentarios as $comentario)
+                       <div class="p-5 border-gray-300 border-b">
+                            <a href="{{ route('posts.index',['user' => $comentario->user]) }}" class="font-bold">
+                                {{ $comentario->user->username }}
+                            </a>
+                            <p>{{ $comentario->comentario }}</p>
+                            <p class="text-sm text-gray-500">{{ $comentario->created_at->diffForHumans() }}</p>
+                       </div>
+                   @endforeach
+               @else
+                   <p class="p-10 text-center">Aun no hay comentarios </p>
+               @endif
+            </div>
         </div>
     </div>
 @endsection

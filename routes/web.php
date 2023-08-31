@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -50,3 +51,6 @@ Route::post('/posts',[PostController::class,'store'])->name('post.store'); //Gua
 Route::get('/{user:username}/posts/{post}',[PostController::class,'show'])->name('posts.show'); //Mostrar posts individuales (Resource Controller)
 
 Route::post('/imagenes',[ImagenController::class,'store'])->name('imagenes.store'); //Guardar imagenes
+
+//Rutas para comentarios
+Route::post('/{user:username}/posts/{post}',[ComentarioController::class,'store'])->name('comentarios.store'); //Guardar comentarios

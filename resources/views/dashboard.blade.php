@@ -53,8 +53,8 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"> 
             <!--Mostrar que no hay publicaciones en caso de -->
             @foreach ($posts as $post)
-            <div>
-                <a href="">
+            <div>               <!-- le pasamos un arreglo con las variables que ocupa -->
+                <a href="{{ route('posts.show',['user' => $user,'post' => $post])}}">
                     <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="imagen-post {{$post->titulo}}">
                 </a>
             </div>            

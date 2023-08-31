@@ -91,4 +91,14 @@ class PostController extends Controller
         //Redirigir al usuario a su muro, recordar que como parametro requiere su nombre de usuario
         return redirect()->route('posts.index',auth()->user()->username);
     }
+
+    //Al ser un Resource Controller, tambien le podemos pasar la variable que le enviamos desde la vista
+    //importando los modelos que le pasamos
+    public function show(User $user,Post $post)
+    {
+        return view('posts.show',[
+            'post' => $post,
+            'user' => $user
+        ]);
+    }
 }

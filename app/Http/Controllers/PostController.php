@@ -15,7 +15,9 @@ class PostController extends Controller
     */
     public function __construct()
     {
-        $this->middleware('auth');    
+        //Con Except, hacemos que los usuarios no autenticados puedan
+        //acceder a ciertas funciones
+        $this->middleware('auth')->except(['show','index']);    
     }
 
     //Antes de que se ejecute el index, se ejecuta el constructor (middleware)
